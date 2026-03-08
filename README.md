@@ -31,7 +31,7 @@ PRAE adds these steps to the same loop:
 
 ### Why Audit Happens Twice
 
-Pre-audit catches wasted budget. Post-audit catches narrative laundering — the tendency to interpret noise as signal. Together they make the loop honest.
+Pre-audit catches wasted budget. Post-audit catches narrative laundering — the tendency to interpret noise as signal. Together they reduce the surface area for self-deception.
 
 ### Why the Verdict Vocabulary Matters
 
