@@ -1,8 +1,16 @@
 # PRAE Design Document
 
-## ARRC Lineage
+## Lineage and Inspiration
 
-PRAE grows from the same root as ARRC: the conviction that AI systems need structured adversarial reasoning to be reliable. ARRC explores this as a reasoning framework — rebuttal-augmented generation, audit trails, confidence calibration. PRAE takes one specific claim from that space and tests it as a runtime:
+### Karpathy's autoresearch
+
+PRAE's proving ground is directly inspired by Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch) — a minimal autonomous loop that points an LLM at a training script, runs it, parses a metric, and decides whether to keep or discard. autoresearch demonstrates that even a simple edit/run/keep-discard cycle can make meaningful progress on a bounded optimization task.
+
+PRAE's thesis is that wrapping the same loop with structured rebuttal and double audit makes it search more intelligently under the same budget. The baseline mode in PRAE is essentially an autoresearch-style loop; the PRAE mode adds the cognitive structure on top. Comparing the two against the same target is the core experiment.
+
+### ARRC
+
+PRAE grows from the same root as [ARRC](https://github.com/erikdrouhard/ARRC): the conviction that AI systems need structured adversarial reasoning to be reliable. ARRC explores this as a reasoning framework — rebuttal-augmented generation, audit trails, confidence calibration. PRAE takes one specific claim from that space and tests it as a runtime:
 
 **Claim**: Under the same bounded budget, the same mutable surface, and the same metric, a loop that does `propose → rebut → audit → execute → audit → verdict` should search more intelligently than a simple `edit → run → keep/discard` loop.
 

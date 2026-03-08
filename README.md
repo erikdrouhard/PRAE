@@ -90,9 +90,11 @@ docs/
 tests/
 ```
 
-## ARRC Lineage
+## Credits and Lineage
 
-PRAE is inspired by [ARRC](https://github.com/erikdrouhard/ARRC)'s reasoning lineage — the idea that structured rebuttal and audit make AI systems more reliable. PRAE is a separate repo because it tests a different thesis: that these ideas work as a *runtime loop*, not just a reasoning framework.
+PRAE's proving-ground approach — point an LLM at a training script, run it, parse a metric, keep or discard — is directly inspired by Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch). PRAE wraps that same loop with structured rebuttal and double audit to test whether the added cognition is worth it.
+
+The deeper intellectual foundation comes from [ARRC](https://github.com/erikdrouhard/ARRC)'s reasoning lineage — the idea that structured adversarial reasoning makes AI systems more reliable. PRAE is a separate repo because it tests a different thesis: that these ideas work as a *runtime loop*, not just a reasoning framework.
 
 ## License
 
