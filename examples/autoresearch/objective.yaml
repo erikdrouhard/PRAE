@@ -1,0 +1,22 @@
+# PRAE Objective: Example autoresearch-style target
+#
+# This objective points at a simple training script that outputs a loss metric.
+# PRAE will try to improve train.py to minimize the loss.
+
+name: "example-mnist-tune"
+repo_path: "."  # Override this to point at your target repo
+mutable_paths:
+  - train.py
+baseline_ref: "main"
+run_command: "python train.py"
+budget_seconds: 120
+metric_name: "loss"
+metric_goal: "minimize"
+metric_regex: "final_loss:\\s*([\\d.]+)"
+max_iterations: 5
+provider: "openai"
+model: "gpt-4o"
+# api_base: "http://localhost:8000/v1"  # Uncomment for local models
+# improvement_threshold: 0.01  # Optional: minimum improvement to count as "better"
+notes: "Example objective for PRAE v1 proving ground"
+instructions: "Focus on learning rate, batch size, and architecture tweaks. Keep changes small."
