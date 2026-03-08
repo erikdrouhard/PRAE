@@ -4,10 +4,18 @@
 # PRAE will try to improve train.py to minimize the loss.
 
 name: "example-mnist-tune"
-repo_path: "."  # Override this to point at your target repo
+
+# Point this at the root of your target repo — the repo that contains train.py.
+# PRAE will create a working branch (prae/work) from baseline_ref.
+repo_path: "."
+
 mutable_paths:
   - train.py
+
+# The branch or commit to start from. PRAE checks out prae/work from this ref.
+# Must exist in the target repo and contain a working train.py.
 baseline_ref: "main"
+
 run_command: "python train.py"
 budget_seconds: 120
 metric_name: "loss"

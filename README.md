@@ -40,25 +40,40 @@ Pre-audit catches wasted budget. Post-audit catches narrative laundering — the
 ## Quick Start
 
 ```bash
-# Install
+# Install PRAE
 pip install -e .
 
-# Run in PRAE mode (dry run, no API key needed)
+# Dry run (no API key needed — uses stub LLM responses)
 python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode prae --dry-run
-
-# Run in baseline mode
 python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode baseline --dry-run
-
-# With a real LLM (set your API key)
-export OPENAI_API_KEY=sk-...
-python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode prae
 ```
+
+To run against a real target:
+
+```bash
+# 1. Set up your target repo (must be a git repo with a train.py on main)
+cd /path/to/your/target-repo
+git init && git add train.py && git commit -m "initial"
+
+# 2. Copy and edit the objective to point at your target
+cp examples/autoresearch/objective.yaml my_objective.yaml
+# Edit my_objective.yaml: set repo_path, run_command, metric_regex, etc.
+
+# 3. Run
+export OPENAI_API_KEY=sk-...
+python -m prae.loop run --objective my_objective.yaml --mode baseline
+python -m prae.loop run --objective my_objective.yaml --mode prae
+```
+
+PRAE creates a `prae/work` branch from `baseline_ref` in your target repo. All mutations happen there. Your `main` branch is never touched.
 
 ## What You Need
 
-1. A target repo with a `train.py` (or other mutable file)
-2. A `run_command` that produces a metric on stdout
+1. A target repo with a `train.py`
+2. A `run_command` that prints a metric to stdout
 3. An `objective.yaml` defining the contract
+
+For v1, `train.py` is the only mutable surface. Everything else is immutable.
 
 ## The Three-File Mental Model
 
@@ -88,6 +103,26 @@ examples/
 docs/
   design.md      — deeper architecture and philosophy
 tests/
+```
+
+## Results
+
+v1 proving ground: a small neural net training loop (`train.py`), minimizing loss, 5 iterations, 120s budget per iteration.
+
+| | Baseline | PRAE |
+|---|---|---|
+| Iterations used | — | — |
+| Final metric | — | — |
+| Proposals rejected pre-execution | n/a | — |
+| Verdicts: keep / revert / revise | — / — / n/a | — / — / — |
+
+*Table will be filled after the first real benchmark run. Both modes run against the same target, same budget, same metric — the only variable is loop structure.*
+
+To reproduce:
+```bash
+export OPENAI_API_KEY=sk-...
+python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode baseline
+python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode prae
 ```
 
 ## Credits and Lineage
