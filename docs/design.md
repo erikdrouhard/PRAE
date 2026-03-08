@@ -10,7 +10,7 @@ PRAE's thesis is that wrapping the same loop with structured rebuttal and double
 
 ### ARRC
 
-PRAE grows from the same root as [ARRC](https://github.com/erikdrouhard/ARRC): the conviction that AI systems need structured adversarial reasoning to be reliable. ARRC explores this as a reasoning framework — rebuttal-augmented generation, audit trails, confidence calibration. PRAE takes one specific claim from that space and tests it as a runtime:
+PRAE grows from the same root as [ARRC](https://github.com/erikdrouhard/ARRC-loop): the conviction that AI systems need structured adversarial reasoning to be reliable. ARRC explores this as a reasoning framework — rebuttal-augmented generation, audit trails, confidence calibration. PRAE takes one specific claim from that space and tests it as a runtime:
 
 **Claim**: Under the same bounded budget, the same mutable surface, and the same metric, a loop that does `propose → rebut → audit → execute → audit → verdict` should search more intelligently than a simple `edit → run → keep/discard` loop.
 

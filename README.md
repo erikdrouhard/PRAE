@@ -129,7 +129,7 @@ python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode 
 
 PRAE's proving-ground approach — point an LLM at a training script, run it, parse a metric, keep or discard — is directly inspired by Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch). PRAE wraps that same loop with structured rebuttal and double audit to test whether the added cognition is worth it.
 
-The deeper intellectual foundation comes from [ARRC](https://github.com/erikdrouhard/ARRC)'s reasoning lineage — the idea that structured adversarial reasoning makes AI systems more reliable. PRAE is a separate repo because it tests a different thesis: that these ideas work as a *runtime loop*, not just a reasoning framework.
+The deeper intellectual foundation comes from [ARRC](https://github.com/erikdrouhard/ARRC-loop)'s reasoning lineage — the idea that structured adversarial reasoning makes AI systems more reliable. PRAE is a separate repo because it tests a different thesis: that these ideas work as a *runtime loop*, not just a reasoning framework.
 
 ## License
 
