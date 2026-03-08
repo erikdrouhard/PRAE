@@ -14,13 +14,13 @@ edit → run → keep/discard
 propose → rebut → audit → execute → audit → keep/revert/revise/branch/escalate
 ```
 
-Same mutable surface. Same budget. Same metric. Different loop intelligence.
+Same mutable surface. Same budget. Same metric. Different search discipline.
 
 ## Why This Matters
 
-A minimal experiment loop (edit/run/keep-discard) does search. But it doesn't *think* about what it's doing. It can't challenge its own proposals before spending budget. It can't distinguish meaningful improvement from noise after the fact.
+A minimal experiment loop can search effectively. PRAE adds explicit rebuttal before execution and explicit audit before and after execution, to test whether that extra discipline improves search under the same constraints.
 
-PRAE adds structured cognition to the same loop:
+PRAE adds these steps to the same loop:
 
 - **Propose**: generate a bounded change
 - **Rebut**: challenge it before it runs
@@ -127,7 +127,7 @@ python -m prae.loop run --objective examples/autoresearch/objective.yaml --mode 
 
 ## Credits and Lineage
 
-PRAE's proving-ground approach — point an LLM at a training script, run it, parse a metric, keep or discard — is directly inspired by Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch). PRAE wraps that same loop with structured rebuttal and double audit to test whether the added cognition is worth it.
+PRAE's proving-ground approach — point an LLM at a training script, run it, parse a metric, keep or discard — is directly inspired by Andrej Karpathy's [autoresearch](https://github.com/karpathy/autoresearch). PRAE wraps that same loop with structured rebuttal and double audit to test whether structured rebuttal and double audit improve search under the same constraints.
 
 The deeper intellectual foundation comes from [ARRC](https://github.com/erikdrouhard/ARRC-loop)'s reasoning lineage — the idea that structured adversarial reasoning makes AI systems more reliable. PRAE is a separate repo because it tests a different thesis: that these ideas work as a *runtime loop*, not just a reasoning framework.
 
